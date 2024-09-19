@@ -1,6 +1,7 @@
 ---
 title: "First post"
-date: "Jul 08 2022"
+date: 2024-09-19
+tags: ["Diary"]
 ---
 
 # First Logs
