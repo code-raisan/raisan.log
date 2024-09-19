@@ -1,5 +1,7 @@
 ---
 import { getCollection } from "astro:content"
+import CommonLayout from "../layouts/CommonLayout.astro";
+import "../styles/fonts.css";
 
 const logs = await getCollection("logs");
 ---
@@ -12,10 +14,10 @@ const logs = await getCollection("logs");
     <meta name="generator" content={Astro.generator} >
     <title>Astro</title>
   </head>
-  <body>
-    <h1 class="text-3xl">raisan.log</h1>
-    {logs.map(v => (
-      <p>{v.id}</p>
-    ))}
-  </body>
+  <CommonLayout>
+  <h1 class="text-3xl">ないようないようないよう</h1>
+  {logs.map(v => (
+    <p>{v.id}</p>
+  ))}
+  </CommonLayout>
 </html>

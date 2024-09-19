@@ -1,0 +1,18 @@
+---
+import { SITE_DESCRIPTION, SITE_TITLE } from "../constract";
+---
+
+<body class="text-neutral-600 zenkakugothic">
+  <header class="w-full flex justify-center p-5">
+    <div class="text-center space-y-2">
+      <h1 class="text-3xl font-bold">{SITE_TITLE}</h1>
+      <p>{SITE_DESCRIPTION}</p>
+    </div>
+  </header>
+  <article class="min-h-[90svh]">
+    <slot/>
+  </article>
+  <footer>
+    <small>&copy; 2024 Raisan.</small>
+  </footer>
+</body>
