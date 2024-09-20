@@ -3,10 +3,10 @@ import { getCollection } from "astro:content"
 import CommonLayout from "../layouts/CommonLayout.astro";
 import "../styles/fonts.css";
 
-const logs = await getCollection("logs");
+const logEntries = await getCollection("logs");
 ---
 
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -15,9 +15,19 @@ const logs = await getCollection("logs");
     <title>Astro</title>
   </head>
   <CommonLayout>
-  <h1 class="text-3xl">ないようないようないよう</h1>
-  {logs.map(v => (
-    <p>{v.id}</p>
-  ))}
+    {logEntries.map((log) =>(
+      <>
+        <a href={`/logs/${log.slug}`}>
+          <div class="space-y-2">
+            <h1 class="text-2xl font-medium">{log.data.title}</h1>
+            <div>
+              <time class="text-lg" datetime="2024-08-09">2024-08-09</time>
+              <p class="text-lg italic">{log.data.subtitle}</p>
+            </div>
+          </div>
+        </a>
+        <hr class="my-6"/>
+      </>
+    ))}
   </CommonLayout>
 </html>

@@ -1,18 +1,28 @@
 ---
-import { SITE_DESCRIPTION, SITE_TITLE } from "../constract";
+import { SITE_DESCRIPTION, SITE_TITLE } from "@/constract";
+import "@/styles/fonts.css";
 ---
 
-<body class="text-neutral-600 zenkakugothic">
-  <header class="w-full flex justify-center p-5">
-    <div class="text-center space-y-2">
-      <h1 class="text-3xl font-bold">{SITE_TITLE}</h1>
-      <p>{SITE_DESCRIPTION}</p>
+<body class="text-neutral-600 zenkakugothic space-y-8">
+  <header class="w-full p-5 space-y-4">
+    <div class="flex justify-center">
+      <div class="space-y-2 text-center">
+        <a href="/" class="w-auto">
+          <h1 class="text-4xl font-bold hover:opacity-80">{SITE_TITLE}</h1>
+        </a>
+        <p>{SITE_DESCRIPTION}</p>
+      </div>
+    </div>
+    <div class="flex justify-evenly">
+      <a href="">Twitter</a>
+      <a href="">About</a>
+      <a href="">Profile</a>
     </div>
   </header>
-  <article class="min-h-[90svh]">
+  <main class="min-h-[100svh] container mx-auto max-w-4xl px-5">
     <slot/>
-  </article>
-  <footer>
-    <small>&copy; 2024 Raisan.</small>
+  </main>
+  <footer class="w-full flex justify-center p-5">
+    <small class="text-lg">&copy; 2024 Raisan.</small>
   </footer>
 </body>

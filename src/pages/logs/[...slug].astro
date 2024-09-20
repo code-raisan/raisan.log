@@ -1,6 +1,8 @@
 ---
+import CommonLayout from '@/layouts/CommonLayout.astro';
 import { getCollection } from 'astro:content';
 
+import "@/styles/contents.css";
 
 export async function getStaticPaths(){
   const logsEntries = await getCollection("logs");
@@ -15,5 +17,20 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<h1>{entry.data.title}</h1>
-<p>{entry.data.date}</p>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} >
+    <title>Astro</title>
+  </head>
+  <CommonLayout>
+    <article>
+      <h1 class="text-3xl">{entry.data.title}</h1>
+      <div id="content">
+        <Content/>
+      </div>
+    </article>
+  </CommonLayout>
+</html>

@@ -1,10 +1,11 @@
 import { defineCollection, z } from "astro:content";
 
 const logs = defineCollection({
-	type: "content",
-	schema: z.object({
-		title: z.string(),
-		date: z.date(),
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    subtitle: z.string(),
+    date: z.date(),
     tags: z.array(z.string())
 	})
 });
