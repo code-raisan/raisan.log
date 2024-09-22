@@ -1,12 +1,12 @@
 ---
-import CommonBody from '@/layouts/CommonBody.astro';
-import { getCollection } from 'astro:content';
+import CommonBody from "@/layouts/CommonBody.astro";
+import { getCollection } from "astro:content";
 
 import "@/styles/contents.css";
-import CommonHtml from '@/layouts/CommonHtml.astro';
-import CommonHead from '@/layouts/CommonHead.astro';
-import Title from '@/components/Title.astro';
-import { SITE_TITLE } from '@/constract';
+import CommonHtml from "@/layouts/CommonHtml.astro";
+import CommonHead from "@/layouts/CommonHead.astro";
+import Title from "@/components/Title.astro";
+import { SITE_TITLE } from "@/constract";
 import { formatTimeString } from "@/library/format-time-string";
 
 export async function getStaticPaths(){
