@@ -8,6 +8,7 @@ import CommonHead from "@/layouts/CommonHead.astro";
 import Title from "@/components/Title.astro";
 import { SITE_TITLE } from "@/constract";
 import { formatTimeString } from "@/library/format-time-string";
+import Ogp from "@/components/Ogp.astro";
 
 export async function getStaticPaths(){
   const logsEntries = await getCollection("logs");
@@ -27,6 +28,7 @@ const formatedDate = formatTimeString(entry.data.date);
 <CommonHtml>
   <CommonHead>
     <Title title={`${entry.data.title} - ${SITE_TITLE}`} description={entry.data.subtitle}/>
+    <Ogp title={`${entry.data.title} - ${SITE_TITLE}`} description={entry.data.subtitle} content="article"/>
   </CommonHead>
   <CommonBody>
     <article class="space-y-8">
