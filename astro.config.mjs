@@ -7,6 +7,6 @@ import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 
 export default defineConfig({
-  site: "https://example.com",
+  site: "https://log.rainyan.net",
   integrations: [mdx(), sitemap(), tailwind(), react()]
 });
