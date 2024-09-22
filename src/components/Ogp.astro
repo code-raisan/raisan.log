@@ -1,12 +1,25 @@
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website"/>
+---
+import { SITE_TITLE, SITE_DESCRIPTION, TWITTER_USER } from "@/constract";
+
+interface Props{
+  title?: string,
+  description?: string,
+  content?: "website" | "article"
+}
+
+const { title = SITE_TITLE, description = SITE_DESCRIPTION, content = "website" } = Astro.props;
+
+const formatedTitle = title === SITE_TITLE?`${title} - ${description}`:title;
+---
+
+<meta property="og:type" content={content}/>
 <meta property="og:url" content={Astro.url}/>
-<meta property="og:title" content={title}/>
+<meta property="og:title" content={formatedTitle}/>
 <meta property="og:description" content={description}/>
 
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta property="twitter:card" content="summary"/>
+<meta property="twitter:site" content={TWITTER_USER}/>
+<meta property="twitter:url" content={Astro.url}/>
+<meta property="twitter:title" content={formatedTitle}/>
+<meta property="twitter:description" content={description}/>
+<meta property="twitter:image" content={new URL("/raisan-icon.png", Astro.url)} />

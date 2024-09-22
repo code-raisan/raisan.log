@@ -1,5 +1,5 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from '@/constract';
+import { SITE_TITLE, SITE_DESCRIPTION } from "@/constract";
 
 interface Props{
   title?: string,
@@ -8,7 +8,7 @@ interface Props{
 
 const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
 
-const formatedTitle = title === SITE_TITLE?`${title} - ${description}`:title
+const formatedTitle = title === SITE_TITLE?`${title} - ${description}`:title;
 ---
 
 <title>{formatedTitle}</title>

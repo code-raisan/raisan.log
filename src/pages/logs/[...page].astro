@@ -2,6 +2,7 @@
 import CommonHead from "@/layouts/CommonHead.astro";
 import CommonHtml from "@/layouts/CommonHtml.astro";
 import Title from "@/components/Title.astro";
+import Ogp from "@/components/Ogp.astro";
 import type { GetStaticPathsOptions } from "astro";
 import { getCollection } from "astro:content";
 import { SITE_TITLE } from "@/constract";
@@ -22,6 +23,7 @@ const { page } = Astro.props;
 <CommonHtml>
   <CommonHead>
     <Title title={`すべてのログ ${page.currentPage}ページ - ${SITE_TITLE}`}/>
+    <Ogp title={`すべてのログ ${page.currentPage}ページ - ${SITE_TITLE}`}/>
   </CommonHead>
   <CommonBody>
     <div class="space-y-8">

@@ -3,3 +3,4 @@
 
 export const SITE_TITLE = "raisan.log";
 export const SITE_DESCRIPTION = "適当なことを書きつづる場所";
+export const TWITTER_USER = "@code_raisan";
