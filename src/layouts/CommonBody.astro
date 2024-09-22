@@ -1,6 +1,7 @@
 ---
-import { SITE_DESCRIPTION, SITE_TITLE } from "@/constract";
 import "@/styles/fonts.css";
+import { SITE_DESCRIPTION, SITE_TITLE } from "@/constract";
+import HeaderLink from "@/components/HeaderLink.astro";
 ---
 
 <body class="text-neutral-600 zenkakugothic space-y-8">
@@ -14,9 +15,10 @@ import "@/styles/fonts.css";
       </div>
     </div>
     <div class="flex justify-evenly">
-      <a href="">Twitter</a>
-      <a href="">About</a>
-      <a href="">Profile</a>
+      <HeaderLink title="About" href="/about"/>
+      <HeaderLink title="Profile" href="https://rainyan.net" external/>
+      <HeaderLink title="GitHub" href="https://github.com/code-raisan" external/>
+      <HeaderLink title="Twitter" href="https://twitter.com/code_raisan" external/>
     </div>
   </header>
   <main class="min-h-[100svh] container mx-auto max-w-4xl px-5">

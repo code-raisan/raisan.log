@@ -1,0 +1,44 @@
+---
+import CommonHead from "@/layouts/CommonHead.astro";
+import CommonHtml from "@/layouts/CommonHtml.astro";
+import Title from "@/components/Title.astro";
+import type { GetStaticPathsOptions } from "astro";
+import { getCollection } from "astro:content";
+import { SITE_TITLE } from "@/constract";
+import CommonBody from "@/layouts/CommonBody.astro";
+import LogCard from "@/components/LogCard.astro";
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const collections = await getCollection("logs");
+  const filterdCollections = collections.filter(v => !v.data.draft);
+  const sortedCollections = filterdCollections.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+  return paginate(sortedCollections, { pageSize: 20 });
+}
+
+const { page } = Astro.props;
+---
+
+<CommonHtml>
+  <CommonHead>
+    <Title title={`すべてのログ ${page.currentPage}ページ - ${SITE_TITLE}`}/>
+  </CommonHead>
+  <CommonBody>
+    <div class="space-y-8">
+      <div>
+        <h1 class="text-xl">すべてのログ {page.currentPage}ページ</h1>
+      </div>
+      <div>
+        {page.data.map((log) =>(<LogCard slug={log.slug} title={log.data.title} subtitle={log.data.subtitle} date={log.data.date}/>))}
+      </div>
+      <div class="flex justify-center space-x-8">
+        {page.url.prev && (
+          <a href={page.url.prev} class="text-lg underline underline-offset-4">前へ</a>
+        )}
+        {page.url.next && (
+          <a href={page.url.next} class="text-lg underline underline-offset-4">次へ</a>
+        )}
+      </div>
+    </div>
+  </CommonBody>
+</CommonHtml>

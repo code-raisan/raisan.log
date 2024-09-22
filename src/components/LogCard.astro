@@ -1,0 +1,23 @@
+---
+import { formatTimeString } from "@/library/format-time-string";
+
+interface Props{
+  slug: string,
+  title: string,
+  date: Date,
+  subtitle: string
+}
+
+const { slug, title, date, subtitle } = Astro.props;
+---
+
+<a href={`/log/${slug}`}>
+  <div class="space-y-2">
+    <h1 class="text-2xl font-medium">{title}</h1>
+    <div>
+      <p class="text-lg">{formatTimeString(date)}</p>
+      <p class="text-lg italic">{subtitle}</p>
+    </div>
+  </div>
+</a>
+<hr class="my-6"/>

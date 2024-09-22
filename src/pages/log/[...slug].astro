@@ -1,0 +1,43 @@
+---
+import CommonBody from '@/layouts/CommonBody.astro';
+import { getCollection } from 'astro:content';
+
+import "@/styles/contents.css";
+import CommonHtml from '@/layouts/CommonHtml.astro';
+import CommonHead from '@/layouts/CommonHead.astro';
+import Title from '@/components/Title.astro';
+import { SITE_TITLE } from '@/constract';
+import { formatTimeString } from "@/library/format-time-string";
+
+export async function getStaticPaths(){
+  const logsEntries = await getCollection("logs");
+
+  return logsEntries.map((entry) =>({
+    params: { slug: entry.slug },
+    props: { entry }
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const formatedDate = formatTimeString(entry.data.date);
+---
+
+<CommonHtml>
+  <CommonHead>
+    <Title title={`${entry.data.title} - ${SITE_TITLE}`} description={entry.data.subtitle}/>
+  </CommonHead>
+  <CommonBody>
+    <article class="space-y-8">
+      <div class="space-y-1">
+        <h1 class="text-3xl">{entry.data.title}</h1>
+        <p class="text-lg">{formatedDate}</p>
+        <p class="text-lg italic">{entry.data.subtitle}</p>
+      </div>
+      <div id="content" class="space-y-4">
+        <Content/>
+      </div>
+    </article>
+  </CommonBody>
+</CommonHtml>

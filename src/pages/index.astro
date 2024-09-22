@@ -1,33 +1,25 @@
 ---
-import { getCollection } from "astro:content"
-import CommonLayout from "../layouts/CommonLayout.astro";
-import "../styles/fonts.css";
+import CommonHtml from "@/layouts/CommonHtml.astro";
+import CommonHead from "@/layouts/CommonHead.astro";
+import CommonBody from "../layouts/CommonBody.astro";
+import Title from "@/components/Title.astro";
+import { getCollection } from "astro:content";
+import { formatTimeString } from "@/library/format-time-string";
+import LogCard from "@/components/LogCard.astro";
 
-const logEntries = await getCollection("logs");
+const logEntries = (await getCollection("logs")).slice(0, 15);
+const filterdEntries = logEntries.filter((v) => !v.data.draft);
+const sortedEntries = filterdEntries.toSorted((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
-<html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} >
-    <title>Astro</title>
-  </head>
-  <CommonLayout>
-    {logEntries.map((log) =>(
-      <>
-        <a href={`/logs/${log.slug}`}>
-          <div class="space-y-2">
-            <h1 class="text-2xl font-medium">{log.data.title}</h1>
-            <div>
-              <time class="text-lg" datetime="2024-08-09">2024-08-09</time>
-              <p class="text-lg italic">{log.data.subtitle}</p>
-            </div>
-          </div>
-        </a>
-        <hr class="my-6"/>
-      </>
-    ))}
-  </CommonLayout>
-</html>
+<CommonHtml>
+  <CommonHead>
+    <Title/>
+  </CommonHead>
+  <CommonBody>
+    {sortedEntries.map((log) =>(<LogCard slug={log.slug} title={log.data.title} subtitle={log.data.subtitle} date={log.data.date}/>))}
+    <div class="flex justify-center">
+      <a href="/logs">すべてのログを見る</a>
+    </div>
+  </CommonBody>
+</CommonHtml>

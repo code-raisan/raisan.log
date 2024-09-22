@@ -1,0 +1,16 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION } from '@/constract';
+
+interface Props{
+  title?: string,
+  description?: string
+}
+
+const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
+
+const formatedTitle = title === SITE_TITLE?`${title} - ${description}`:title
+---
+
+<title>{formatedTitle}</title>
+<meta name="title" content={formatedTitle}/>
+<meta name="description" content={description}/>
