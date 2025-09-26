@@ -3,6 +3,7 @@ title: "綺麗ごとは汚い"
 subtitle: "農家にでもなるか。以外と幸せかもしれん"
 date: 2024-10-20
 tags: ["diary"]
+draft: true
 ---
 
 綺麗ごとって汚い
