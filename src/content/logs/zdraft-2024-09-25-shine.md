@@ -3,6 +3,7 @@ title: "SHINE"
 subtitle: "輝きと闇は紙一重"
 date: 2024-09-25
 tags: ["diary"]
+draft: true
 ---
 
 世の中って理不尽多いですよね。
