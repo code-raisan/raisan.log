@@ -34,3 +34,9 @@ tags: ["Tech", "SmartPhone"]
 
 なんか間違ってたりしたらGitHubのほうにIssue立ててね～ほんにゃらら～
 
+<style>
+ol {
+  list-style: auto;
+  margin-left: 1rem;
+}
+</style>
