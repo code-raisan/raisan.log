@@ -1,5 +1,5 @@
 ---
-title: "Xiaomi Redmiで各種回復モードの入り方がわかりずらすぎた件"
+title: "Xiaomi Redmiで各種回復モードの入り方がわかりづらすぎた件"
 subtitle: "リカバリーモード, セーフモード, FASTBOOTモードの入り方をまとめたよ☆"
 date: 2026-06-10
 tags: ["Tech", "SmartPhone"]
